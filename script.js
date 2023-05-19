@@ -45,14 +45,10 @@ function renderElements(taskList) {
   htmlList.innerHTML = "";
 
   // Ajustar a lógica
-  let card = createCard(taskList[0]);
-  htmlList.appendChild(card);
-
-  card = createCard(taskList[1]);
-  htmlList.appendChild(card);
-
-  card = createCard(taskList[2]);
-  htmlList.appendChild(card);
+  for (let i = 0; i < taskList.length; i++) {
+    let card = createCard(taskList[i]);
+    htmlList.appendChild(card);
+  }
 }
 
 renderElements(tasks);
