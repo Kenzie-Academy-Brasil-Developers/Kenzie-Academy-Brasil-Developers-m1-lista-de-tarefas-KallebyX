@@ -13,7 +13,7 @@ const tasks = [
   },
 ];
 
-function createCard(taskInfo) {
+function createCard(taskInfo, index) {
   // Criando elementos necessários
   const li = document.createElement("li");
   const div = document.createElement("div");
@@ -32,6 +32,12 @@ function createCard(taskInfo) {
 
   // Adicionando icone ao botão
   button.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+
+  //implementar a funcionalidade de deletar uma tarefa existente, além de atualizar a renderização dos elementos na tela.
+  button.addEventListener("click", function(){
+    tasks.splice(index, 1);
+    renderElements(tasks);
+  })
 
   /// Adicionando a div e o botão de deletar ao list item
   li.appendChild(div);
