@@ -37,6 +37,15 @@ function createCard(taskInfo) {
   li.appendChild(div);
   li.appendChild(button);
 
+  // adicionando classe de estilo aos span
+  if (taskInfo.tipo === "Urgente") {
+    span.classList.add("span-urgent");
+  } else if (taskInfo.tipo === "Prioritário") {
+    span.classList.add("span-priority");
+  } else if (taskInfo.tipo === "Normal") {
+    span.classList.add("span-normal");
+  }
+
   return li;
 }
 
@@ -52,3 +61,26 @@ function renderElements(taskList) {
 }
 
 renderElements(tasks);
+
+// Adicione um evento de clique ao botão "Adicionar Tarefa na Lista"
+
+const botaoAdd = document.getElementById("btnSubmit");
+botaoAdd.addEventListener("click", addTask);
+
+
+function addTask(event) {
+  event.preventDefault();
+
+  const titulo = document.getElementById("input_title").value;
+  const tipo = document.getElementById("input_priority").value;
+
+  const objetoNovo = {
+    titulo: titulo,
+    tipo: tipo,
+  };
+
+  tasks.push(objetoNovo);
+  renderElements(tasks);
+
+  document.getElementById("input_title").value = "";
+}
